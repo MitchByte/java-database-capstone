@@ -1,53 +1,138 @@
-/* this is the style sheet file for index.htlm  */
+/* Landing page and role selector styles. */
 
-/* 
-**Global Reset (`*`)**
+.container {
+  min-height: 100vh;
+}
 
-* Remove all default margin and padding.
-* Use `border-box` for sizing to include padding and border in element size.
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-**Base (`html, body`)**
+#header:empty,
+#footer:empty {
+  display: none;
+}
 
-* Set height to 100% for full viewport layout.
-* Use the `'Roboto'` sans-serif font for modern, clean typography.
+.main-content {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 620px;
+  padding: 48px 24px;
+  background-color: #e8f0ed;
+  background-image: linear-gradient(135deg, rgb(245 248 246 / 94%), rgb(226 239 233 / 88%)),
+    url("/assets/images/defineRole/index.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  text-align: center;
+}
 
-**Layout Wrapper (`.wrapper`)**
+.welcome {
+  width: min(100%, 1000px);
+}
 
-* Use a vertical flexbox layout.
-* Ensure the wrapper covers at least the full height of the screen (`min-height: 100vh`).
+.eyebrow {
+  margin-bottom: 14px;
+  color: #0d7169;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
 
-**Heading (`h2`)**
+.welcome > h2 {
+  margin-bottom: 18px;
+  color: #003e3e;
+  font-family: "Alegreya", "Roboto", sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
 
-* Set a large font size (`48px`) for prominence.
-* Add a bottom margin of `50px` for spacing.
-* Use a dark teal color (`#003e3e`).
-* Make the font bold and use a blended font stack (`'Alegreya', 'Roboto', sans-serif`) for elegant styling.
+.intro {
+  max-width: 620px;
+  margin: 0 auto 40px;
+  color: #4c6662;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
 
-**Main Section (`.main-content`)**
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  text-align: left;
+}
 
-* Allow the section to grow to fill space with `flex-grow: 1`.
-* Add `40px` of internal padding.
-* Center content both horizontally and vertically using `justify-content` and `align-items`.
-* Display items in a column direction.
-* Center all text.
-* Apply a full-screen background image with:
+.role-card {
+  display: flex;
+  min-height: 230px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  border: 1px solid #dce8e2;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 12px 32px rgb(0 45 42 / 9%);
+}
 
-  * `cover` size
-  * `center` positioning
-  * no repeat
-  * `fixed` attachment to keep image still during scroll
+.role-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  background: #e5f2ee;
+  color: #0d7169;
+  font-size: 1.4rem;
+}
 
-**Buttons (`button`)**
+.role-card h3 {
+  margin-bottom: 8px;
+  color: #173b3b;
+  font-size: 1.2rem;
+}
 
-* Style with a teal green background (`#015c5d`) and white text.
-* Remove borders and round the corners (`12px`).
-* Use `10px 20px` padding and set width to `200px`.
-* Add a top margin of `10px` for spacing.
-* Enable pointer cursor and readable font size (`16px`).
-* On hover, change background color to bold red (`#A62B1F`).
+.role-card p {
+  flex: 1;
+  margin-bottom: 20px;
+  color: #637a77;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
 
-**Dashboard Buttons (`.dashboard-btn`)**
+.role-actions {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
 
-* Use the same base green background (`#015c5d`) as the default button.
-* On hover, darken the background to deep teal (`#003e3e`) for visual feedback.
- */
+.role-actions button {
+  width: min(100%, 200px);
+  margin-top: 10px;
+}
+
+@media (max-width: 760px) {
+  .main-content {
+    min-height: auto;
+    padding: 48px 20px;
+    background-attachment: scroll;
+  }
+
+  .role-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .role-card {
+    min-height: 0;
+  }
+}

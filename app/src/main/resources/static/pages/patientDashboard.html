@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="../assets/images/logo/logo.png" />
-    <title>PatientDashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse doctors and find an appointment with Smart Clinic.">
+    <link rel="icon" type="image/png" href="../assets/images/logo/logo.png">
+    <title>Find a Doctor | Smart Clinic</title>
     <link rel="stylesheet" href="../assets/css/adminDashboard.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/patientDashboard.css">
@@ -13,7 +15,7 @@
     <script src="../js/util.js" defer></script>
     <script src="../js/components/header.js" defer></script>
     <script src="../js/components/footer.js" defer></script>
-    <script type="module" src="../js/components/modals.js"></script>
+    <script type="module" src="../js/components/modals.js" defer></script>
 </head>
 
 <body onload="renderContent()">
@@ -21,39 +23,55 @@
         <div class="wrapper">
             <div id="header"></div>
             <main class="main-content">
-                <input type="text" id="searchBar" class="searchBar" placeholder="Search Bar for custom output" />
-                <div class="filter-wrapper">
-                    <select class="filter-select" id="filterTime">
-                        <option value="">Sort by Time</option>
-                        <option value="AM">AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    <select class="filter-select" id="filterSpecialty">
-                        <option value="">Filter by Specialty</option>
-                        <option value="Cardiologist">Cardiologist</option>
-                        <option value="Dermatologist">Dermatologist</option>
-                        <option value="Neurologist">Neurologist</option>
-                        <option value="Pediatrician">Pediatrician</option>
-                        <option value="Orthopedic">Orthopedic</option>
-                        <option value="Gynecologist">Gynecologist</option>
-                        <option value="Psychiatrist">Psychiatrist</option>
-                        <option value="Dentist">Dentist</option>
-                        <option value="Ophthalmologist">Ophthalmologist</option>
-                        <option value="Ent">ENT Specialist</option>
-                        <option value="Urologist">Urologist</option>
-                        <option value="Oncologist">Oncologist</option>
-                        <option value="Gastroenterologist">Gastroenterologist</option>
-                        <option value="General">General Physician</option>
-                    </select>
-                </div>
-                <div id="content"></div>
+                <section class="patient-dashboard" aria-labelledby="patient-dashboard-title">
+                    <div class="patient-dashboard-heading">
+                        <p class="eyebrow">Your care, made simple</p>
+                        <h1 id="patient-dashboard-title">Find the right doctor</h1>
+                        <p class="dashboard-description">Browse our doctors and filter by availability or specialty to find a good fit.</p>
+                    </div>
+
+                    <div class="doctor-search-tools" role="search" aria-label="Search and filter doctors">
+                        <label class="visually-hidden" for="searchBar">Search doctors by name</label>
+                        <input type="search" id="searchBar" class="searchBar" placeholder="Search doctors by name..." autocomplete="off">
+                        <div class="filter-wrapper">
+                            <label class="visually-hidden" for="filterTime">Filter by availability</label>
+                            <select class="filter-select" id="filterTime">
+                                <option value="">All availability</option>
+                                <option value="AM">Morning (AM)</option>
+                                <option value="PM">Afternoon (PM)</option>
+                            </select>
+                            <label class="visually-hidden" for="filterSpecialty">Filter by specialty</label>
+                            <select class="filter-select" id="filterSpecialty">
+                                <option value="">All specialties</option>
+                                <option value="Cardiologist">Cardiologist</option>
+                                <option value="Dermatologist">Dermatologist</option>
+                                <option value="Neurologist">Neurologist</option>
+                                <option value="Pediatrician">Pediatrician</option>
+                                <option value="Orthopedic">Orthopedic</option>
+                                <option value="Gynecologist">Gynecologist</option>
+                                <option value="Psychiatrist">Psychiatrist</option>
+                                <option value="Dentist">Dentist</option>
+                                <option value="Ophthalmologist">Ophthalmologist</option>
+                                <option value="Ent">ENT Specialist</option>
+                                <option value="Urologist">Urologist</option>
+                                <option value="Oncologist">Oncologist</option>
+                                <option value="Gastroenterologist">Gastroenterologist</option>
+                                <option value="General">General Physician</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="content" aria-live="polite" aria-label="Available doctors">
+                        <p class="loading-message">Loading doctors...</p>
+                    </div>
+                </section>
             </main>
             <div id="footer"></div>
         </div>
     </div>
-    <div id="modal" class="modal">
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Patient account or booking form">
         <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
+            <button type="button" class="close" id="closeModal" aria-label="Close dialog">&times;</button>
             <div id="modal-body"></div>
         </div>
     </div>

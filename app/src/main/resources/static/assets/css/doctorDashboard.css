@@ -1,65 +1,273 @@
-/* This is the style sheet for the doctorDashboard.html */
-/* 
-**Table Header (`.table-header`)**
+/* Doctor dashboard and patient-record page styles. */
 
-* Set font size to `24px` for clear emphasis.
-* Use a dark teal color (`#015c5d`) for consistency with the theme.
-* Add `30px` bottom margin and remove right margin.
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-**Table Styling (`table`)**
+html,
+body {
+  height: 100%;
+}
 
-* Make the table full width (`100%`).
-* Collapse borders for clean lines.
-* Use a `sans-serif` font.
-* Add `20px` top margin for spacing.
+html body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
 
-**Table Head (`thead`)**
+.container {
+  min-height: 100vh;
+}
 
-* Set a very light dark background (`#33333310`) for header row.
-* Use white text color (`#fff`).
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-**Table Cells (`td, th`)**
+.main-content {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  min-width: 0;
+  padding: clamp(20px, 4vw, 42px);
+  background-color: #edf3f0;
+  background-image: linear-gradient(135deg, rgb(245 248 246 / 94%), rgb(226 239 233 / 88%)),
+    url("/assets/images/defineRole/index.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 
-* Apply padding of `12px 16px` for spacing.
-* Center-align the text.
-* Add a subtle bottom border (`1px solid #ddd`).
+.doctor-dashboard {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
 
-**Table Row Styling**
+.dashboard-heading {
+  margin-bottom: 24px;
+  text-align: left;
+}
 
-* Alternate row colors for better readability:
+.dashboard-heading h1 {
+  margin: 0 0 8px;
+  color: #003e3e;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
 
-  * Even rows: semi-transparent light grey (`#f9f9f959`).
-  * Odd rows: soft white background (`#ffffffc0`).
-* On hover: highlight row with a light teal overlay (`#015c5d39`).
+.eyebrow {
+  margin-bottom: 8px;
+  color: #015c5d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
-**Prescription Button (`.prescription-btn`)**
+.dashboard-description {
+  color: #536b67;
+  line-height: 1.5;
+}
 
-* Set size to `30px x 30px`.
-* Make it interactive with a pointer cursor.
-* Add transition effects for scale and brightness on hover.
-* On hover:
+.appointment-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 18px;
+  border: 1px solid #dfe9e4;
+  border-radius: 12px;
+  background: #fff;
+}
 
-  * Slightly enlarge (`scale(1.1)`)
-  * Brighten appearance
-* On click: slightly shrink (`scale(0.95)`).
+.searchBar {
+  width: min(100%, 390px);
+  min-height: 44px;
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid #cbd9d3;
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+}
 
-**No Record Message (`.noPatientRecord`)**
+.searchBar:focus,
+.date-picker:focus {
+  border-color: #015c5d;
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(1 92 93 / 15%);
+}
 
-* Use a `16px` italic grey font to indicate no data gently.
+.appointment-filters {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
 
-**Today Button (`.today-btn`)**
+.button,
+.today-btn,
+#todayButton {
+  min-height: 42px;
+  width: auto;
+  margin: 0;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #015c5d;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
 
-* Add right margin (`10px`).
-* Add padding (`10px`).
-* Set background color to teal green (`#015c5d`).
+.button:hover,
+.today-btn:hover,
+#todayButton:hover {
+  transform: translateY(-1px);
+  background-color: #017d7e;
+}
 
-**Date Picker (`.date-picker`)**
+.date-picker {
+  min-height: 42px;
+  width: auto;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #cbd9d3;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #263f3b;
+  font: inherit;
+}
 
-* Add left margin (`10px`) and top margin (`13px`).
-* Round corners with `8px` radius.
-* Add padding (`10px`) and set fixed height (`30px`).
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #dfe9e4;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 8px 22px rgb(0 45 42 / 5%);
+}
 
----
+table,
+.appointment-table {
+  width: 100%;
+  margin-top: 0;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
 
-Let me know if you'd like a consolidated style guide for the entire HospitalCRM frontend.
- */
+thead,
+.table-header {
+  background-color: rgb(1 92 93 / 92%);
+  color: #fff;
+}
+
+td,
+th {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e1e9e5;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f3f7f5;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+tbody tr:hover {
+  background-color: rgb(1 92 93 / 10%);
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.loading-message,
+.noPatientRecord {
+  padding: 24px;
+  color: #6b7471;
+  font-style: italic;
+  text-align: center;
+}
+
+.prescription-btn {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.prescription-btn:hover {
+  transform: scale(1.1);
+  filter: brightness(1.15);
+}
+
+.prescription-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 700px) {
+  .main-content {
+    padding: 20px 14px;
+    background-attachment: scroll;
+  }
+
+  .appointment-tools,
+  .appointment-filters {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .appointment-tools {
+    padding: 14px;
+  }
+
+  .appointment-filters {
+    justify-content: flex-start;
+  }
+
+  .searchBar,
+  .date-picker,
+  .appointment-filters button {
+    width: 100%;
+  }
+
+  table,
+  .appointment-table {
+    min-width: 640px;
+  }
+
+  td,
+  th {
+    padding: 11px 12px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

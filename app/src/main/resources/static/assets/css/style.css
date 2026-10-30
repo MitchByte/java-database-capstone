@@ -1,6 +1,23 @@
 /* This is the style sheet for global change across the files. */
 
 /* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: #173b3b;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -136,6 +153,13 @@
     margin-bottom: 8px;
     color: #0a0a23;
   }
+
+  .footer-column h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #0a0a23;
+  }
   
   .footer-column a {
     text-decoration: none;
@@ -146,6 +170,13 @@
   .footer-column a:hover {
     color: #003e3e;
     transition: color 0.3s ease;
+  }
+
+  .footer-copyright {
+    max-width: 1200px;
+    margin: 24px auto 0;
+    color: #536b67;
+    font-size: 13px;
   }
   
   /* Mobile Responsiveness */
@@ -378,5 +409,75 @@
 .checkbox-group input[type="checkbox"] {
   margin-right: 0.5rem;
   accent-color: #015c5db8; 
+}
+
+/* Shared button and form interactions */
+button {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 20px;
+  background-color: #015c5d;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  background-color: #a62b1f;
+}
+
+button:focus-visible,
+a:focus-visible,
+.input-field:focus-visible,
+.select-dropdown:focus-visible {
+  outline: 3px solid #e28282;
+  outline-offset: 3px;
+}
+
+.dashboard-btn {
+  width: 100%;
+  background-color: #015c5d;
+}
+
+.dashboard-btn:hover {
+  background-color: #003e3e;
+}
+
+.input-field,
+.select-dropdown {
+  min-height: 42px;
+  border-radius: 8px;
+}
+
+.input-field::placeholder {
+  color: #75827f;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+}
+
+.modal {
+  overflow-y: auto;
+  padding: 24px 16px;
+}
+
+.modal-content {
+  width: min(100%, 430px);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 24px 18px;
+  }
+
+  .filter-wrapper {
+    width: 100%;
+  }
 }
 
